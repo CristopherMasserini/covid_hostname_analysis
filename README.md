@@ -19,7 +19,7 @@ The overall project is as follows:
 - Then, the base domains are looked at to see when they were created. If a base domain was created within a month, it would be more likely to be malicious than a base domain created a few years ago. The score gets adjusted to account for the base domain age.
 - Finally, two cutoff scores are set. Under the first, is when a hostname is most likely malicious. Between the first and second is when further analysis should be be done, or just take basic precaution. Above the second cutoff is most likely a valid hostname.
 
-#### Example
+### Example
 As an example for the age of the base domain, a couple of hostnames are shown below
 
 ```
@@ -37,3 +37,6 @@ If you look print out these creation dates, you see the ones for Duke are 1986-0
 Whereas the creation date for possible_bad_link is 2020-03-13 05:03:41 compared to 2020-3-15 21:04:09.095935 on the file, which is inside one year. 
 
 The assumption here is that the older the base domain name, the more likely it is to be valid.
+
+## Potential Features
+- An option that allows a .csv file to be saved and continually appended with only the newest records each time the program is run. This would be instead of running through all the records each time the program is run.
