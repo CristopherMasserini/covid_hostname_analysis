@@ -1,5 +1,6 @@
 # covid_malware
 =============================================
+
 A project that takes a file of hostnames that have a reference to COVID-19 and attempts to separate the malicious from the valid. The goal here was to get a viable package available as quickly as possible to help mitigate the affect of opportunistic attackers. This is still a work in process and should be used as a base for a business to build off of. Some of the cutoff variables for scoring were picked in a good but relatively arbitrary manner. You can adjust the cutoffs to be more or less stringent based off of your needs.
 
 =============================================
@@ -9,6 +10,7 @@ This project collects the information published by a researcher at: https://1984
 Because this project, written in python, is dependent on the library python-who is (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. 
 
 =============================================
+
 The overall project is as follows:
 - First, access the information on the website. 
 - Next, look at how quickly the hostnames were created with respect to the previous one.
