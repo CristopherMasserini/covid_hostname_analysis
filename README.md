@@ -8,7 +8,7 @@ A project that takes a file of hostnames that have a reference to COVID-19 and a
 ## Data and libraries used
 This project collects the information published by a researcher at: https://1984.sh/covid19-domains-feed.txt
 
-Because this project, written in python, is dependent on the library python-who is (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. 
+Because this project, written in python, is dependent on the library python-whois (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. 
 
 
 ## Details
