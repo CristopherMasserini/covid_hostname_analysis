@@ -17,7 +17,7 @@ The overall project is as follows:
 - Next, look at how quickly the hostnames were created with respect to the previous one.
   - The logic here is that hostnames created in very quick succession were more likely to be malicious. This can be seen when you see hostnames like coronavirusprevention, coronavirusfreevaccine, coronaviruswellnesskit, etc. all created very quickly (well inside one second). These hostnames then get a score based off of how quickly they were created.
 - Then, the base domains are looked at to see when they were created. If a base domain was created within a month, it would be more likely to be malicious than a base domain created a few years ago. The score gets adjusted to account for the base domain age.
-- Finally, two cutoff scores are set. Under the first, is when a hostname is most likely malicious. Between the first and second is when further analysis should be be done, or just take basic precaution. Above the second cutoff is most likely a valid hostname.
+- Finally, the IP Addresses are put into the data frame. This is done so that the IPs can be analyzed and also given a score (coming soon). This score would look at which IP Addresses come up a large number of times, as registering multiple base domains to one IP Address is a known phishing technique. 
 
 #### Example
 As an example for the age of the base domain, a couple of hostnames are shown below
