@@ -20,7 +20,7 @@ The overall project is as follows:
 - Finally, the IP Addresses are put into the data frame. This is done so that the IPs can be analyzed and also given a score (coming soon). This score would look at which IP Addresses come up a large number of times, as registering multiple base domains to one IP Address is a known phishing technique. 
 - This all comes together into a final score out of 100, with the closest to 100 being the most likely to be a malicious hostname
 
-#### Example
+### Example
 As an example for the age of the base domain, a couple of hostnames are shown below
 
 ```
