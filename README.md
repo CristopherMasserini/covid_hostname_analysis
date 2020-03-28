@@ -18,6 +18,7 @@ The overall project is as follows:
   - The logic here is that hostnames created in very quick succession were more likely to be malicious. This can be seen when you see hostnames like coronavirusprevention, coronavirusfreevaccine, coronaviruswellnesskit, etc. all created very quickly (well inside one second). These hostnames then get a score based off of how quickly they were created.
 - Then, the base domains are looked at to see when they were created. If a base domain was created within a month, it would be more likely to be malicious than a base domain created a few years ago. The score gets adjusted to account for the base domain age.
 - Finally, the IP Addresses are put into the data frame. This is done so that the IPs can be analyzed and also given a score (coming soon). This score would look at which IP Addresses come up a large number of times, as registering multiple base domains to one IP Address is a known phishing technique. 
+- This all comes together into a final score out of 100, with the closest to 100 being the most likely to be a malicious hostname
 
 #### Example
 As an example for the age of the base domain, a couple of hostnames are shown below
@@ -37,3 +38,15 @@ If you look print out these creation dates, you see the ones for Duke are 1986-0
 Whereas the creation date for possible_bad_link is 2020-03-13 05:03:41 compared to 2020-3-15 21:04:09.095935 on the file, which is inside one year. 
 
 The assumption here is that the older the base domain name, the more likely it is to be valid.
+
+We also look at the IP adress registered to each hostname. The assumption here is the more hostnames registered to one IP, the higher the likelihood of those hostnames being malicious
+
+## Scoring Details
+Each hostname gets a few different scores and an ultimate final score. For the time between creation, age of the base domain, and number of occurances of the IP address, each hostname is given a score between with 1 being the more risky and the higher the score being less risky. In the ultimate final score, all these previous scores are added together and subtracted from 100.
+
+Scoring is done in this way so that the final score is in line with industry standards of the larger score being the riskiest.
+
+#### Example
+If a hostname was created within a second of the previous one (score of 1), had been created inside a year (score of 1), and the IP address was seen more than 3 times (score of 1), the final score qould be: 100 - 1 - 1 - 1 = 97 which is highly risky.
+
+If a hostname was created after 4 seconds of the previous one (score of 5), had been created 3 years from today (score of 10), and the IP address was seen 1 time (score of 10), the final score qould be: 100 - 5 - 10 - 10 = 75 which is a moderate to low risk score.
