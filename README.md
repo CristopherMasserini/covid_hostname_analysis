@@ -8,9 +8,9 @@ A project that takes a file of hostnames that have a reference to COVID-19 and a
 ## Data and libraries used
 This project collects the information published by a researcher at: https://1984.sh/covid19-domains-feed.txt
 
-Because this project, written in python, is dependent on the library python-whois (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. The program, by design, has to make a lot of DNS calls which affects the runtime of the program. This will often take several hours on a standard laptop, but running on a server can cut the runtime down significantly.
+Because this project, written in Python, is dependent on the library python-whois (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. The program, by design, has to make a lot of DNS calls which affects the runtime of the program. This will often take several hours on a standard laptop, but running on a server can cut the runtime down significantly.
 
-This project also uses the subprocess library. If you come across an error that there is no keyword argument called text, the solution for that is updating to the most recent version of python. 
+The program is able to run on a minimum of Python 3.5.2 but with some issues. The whois.exceptions.FailedParsingWhoisOutput exception will be raised on certain hostnames for users of Python 3.5.2 but is not raised when using Python 3.8.1. While the program still runs and can give priliminary results on hostnames, for the most accurate results, it is suggested to use the most up to date version of Python you can.
 
 
 ## Details
