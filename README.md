@@ -8,7 +8,9 @@ A project that takes a file of hostnames that have a reference to COVID-19 and a
 ## Data and libraries used
 This project collects the information published by a researcher at: https://1984.sh/covid19-domains-feed.txt
 
-Because this project, written in python, is dependent on the library python-whois (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. 
+Because this project, written in python, is dependent on the library python-whois (https://github.com/DannyCork/python-whois) to access a DNS, there are some issues that can only be worked out in that library. For instance, the country code TLD for Portugal, .pt, is not recognized in that library as valid. The program, by design, has to make a lot of DNS calls which affects the runtime of the program. This will often take several hours on a standard laptop, but running on a server can cut the runtime down significantly.
+
+This project also uses the subprocess library. If you come across an error that there is no keyword argument called text, the solution for that is updating to the most recent version of python. 
 
 
 ## Details
@@ -46,7 +48,7 @@ Each hostname gets a few different scores and an ultimate final score. For the t
 
 Scoring is done in this way so that the final score is in line with industry standards of the larger score being the riskiest.
 
-#### Example
+### Example
 If a hostname was created within a second of the previous one (score of 1), had been created inside a year (score of 1), and the IP address was seen more than 3 times (score of 1), the final score qould be: 100 - 1 - 1 - 1 = 97 which is highly risky.
 
 If a hostname was created after 4 seconds of the previous one (score of 5), had been created 3 years from today (score of 10), and the IP address was seen 1 time (score of 10), the final score qould be: 100 - 5 - 10 - 10 = 75 which is a moderate to low risk score.
