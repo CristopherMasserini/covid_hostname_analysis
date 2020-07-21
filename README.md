@@ -46,7 +46,7 @@ We also look at the IP adress registered to each hostname. The assumption here i
 ## Scoring Details
 Each hostname gets a few different scores and an ultimate final score. For the time between creation, age of the base domain, and number of occurances of the IP address, each hostname is given a score between with 1 being the more risky and the higher the score being less risky. In the ultimate final score, all these previous scores are added together and subtracted from 100.
 
-Scoring is done in this way so that the final score is in line with industry standards of the larger score being the riskiest.
+Scoring is done in this way so that the final score is in line with industry standards of the larger score being the riskiest. My recommendation is to block any hostname with a score above 90.
 
 ### Example
 If a hostname was created within a second of the previous one (score of 1), had been created inside a year (score of 1), and the IP address was seen more than 3 times (score of 1), the final score qould be: 100 - 1 - 1 - 1 = 97 which is highly risky.
