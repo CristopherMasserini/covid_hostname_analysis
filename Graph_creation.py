@@ -1,20 +1,24 @@
-# Imports
+# ----Imports----
 import matplotlib.pyplot as plt
+from matplotlib import dates
 import pandas as pd
 import numpy as np
 from datetime import datetime
 
+# ----Data manipulation----
 # Loads the data and creates lists for the graphs
 df = pd.read_csv('HostnameData_dates.csv')
-dates = df.loc[:, "Hostname Creation Date"]
-date_list = list(np.unique(dates))
+
+
+dates_rec = df.loc[:, "Hostname Creation Date"]
+date_list = list(np.unique(dates_rec))
 date_count = [0 for date in date_list]
-for i in range(0, len(dates)):
+for i in range(0, len(dates_rec)):
     rec_date = df.iloc[i, 0]
     _ = date_list.index(rec_date)
     num = date_count[_]
     date_count[_] = num + 1
-    
+
 # Creates the 7 day averages. If first 6 days, the average just comes from the days before.
 # Ex. 4th day would be a 4 day average, 5th day would be a 5 day average, etc.
 seven_day_averages = list()
@@ -35,16 +39,25 @@ for i in range(0, len(date_count)):
 
     seven_day_averages.append(ave)
 
+# ----Plots----
 # Changes the date to a better format
 date_list_new = [datetime.strptime(date, '%Y-%m-%d') for date in date_list]
 
 # Creates the bar graphs
-plt.bar(date_list_new, date_count)
-plt.title('COVID Hostname Creation')
-plt.xlabel('Day')
-plt.ylabel('Hostnames Registered that Day')
+plt.bar(date_list_new, date_count, label='Daily Hostnames Created')
 
 # Creates the 7 day average line graph on the bar chart
-plt.plot(date_list_new, seven_day_averages, color='r')
+ave_line, = plt.plot(date_list_new, seven_day_averages, color='r', label='7 Day Average')
+
+# Better formatting for the graph
+ax = plt.gca()
+xaxis = dates.date2num(date_list_new)
+hfmt = dates.DateFormatter('%m\n%d')
+ax.xaxis.set_major_formatter(hfmt)
+
+plt.title('COVID Hostname Creation')
+plt.xlabel('Month\nDay')
+plt.ylabel('Hostnames Registered that Day')
+plt.legend(handles=[ave_line])
 
 plt.show()
